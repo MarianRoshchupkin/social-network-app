@@ -1,0 +1,42 @@
+.editForm {
+  display: flex;
+  align-items: center;
+  width: 900px
+}
+
+.editInput {
+  padding: 8px 20px;
+  border: 1px solid var(--grey39);
+  border-radius: 8px;
+  width: 150px;
+  height: 36px;
+  font-size: 18px;
+  line-height: 20px;
+  color: var(--white);
+  background-color: var(--grey29);
+  box-sizing: border-box;
+}
+
+.editInput:not(:last-child) {
+  margin-right: 20px;
+}
+
+.editInput:focus {
+  outline: 1px solid var(--white);
+}
+
+.saveButton {
+  padding: 0 16px;
+  margin-left: auto;
+  border-radius: 8px;
+  width: 200px;
+  height: 50px;
+  font-size: 18px;
+  text-align: center;
+  color: var(--black22);
+  background-color: var(--white);
+}
+
+.saveButton:hover {
+  background-color: var(--greyD9);
+}

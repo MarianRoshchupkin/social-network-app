@@ -1,0 +1,52 @@
+.modal {
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  padding: 50px 60px;
+  margin: 0 auto;
+  border-radius: 7px;
+  max-width: 50%;
+  min-width: 200px;
+  min-height: 160px;
+  background: var(--grey29);
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.15);
+  transform: translateX(-50%);
+  z-index: 1000;
+  overflow-x: hidden;
+  overflow-y: auto;
+  text-align: center;
+}
+
+.modalDesc {
+  margin: 0 0 30px 0;
+  font-size: 20px;
+  line-height: 28px;
+  color: var(--white);
+}
+
+.modalButton {
+  padding: 10px 20px;
+  border-radius: 10px;
+  width: 200px;
+  font-size: 20px;
+  color: var(--white);
+  background-color: var(--grey29);
+  cursor: pointer;
+}
+
+.modalButton:not(:last-child) {
+  margin-right: 20px;
+}
+
+.modalButton:hover {
+  background-color: var(--grey39);
+}
+
+.modalInput {
+  position: absolute;
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  z-index: -1;
+}

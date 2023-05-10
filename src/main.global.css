@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+:root {
+  --black:           #141414;
+  --black22:         #222222;
+  --black29:         #292929;
+  --black33:         #333333;
+  --greyE1:          #E1E3E6;
+  --grey29:          #ffffff29;
+  --grey39:          #ffffff39;
+  --orange:          #CC6633;
+  --green:           #A4CC33;
+  --green4b:         #4bb34b;
+  --green59:         #59B959;
+  --vkBlue:          #71aaeb;
+  --whiteLightness:  100%;
+  --white:           hsl(0, 0%, var(--whiteLightness));
+  --greyF4:          hsl(0, 0%, calc(var(--whiteLightness) - 4%));
+  --greyF3:          hsl(0, 0%, calc(var(--whiteLightness) - 5%));
+  --greyEC:          hsl(0, 0%, calc(var(--whiteLightness) - 7%));
+  --greyD9:          hsl(0, 0%, calc(var(--whiteLightness) - 15%));
+  --greyC4:          hsl(0, 0%, calc(var(--whiteLightness) - 23%));
+  --grey99:          hsl(0, 0%, calc(var(--whiteLightness) - 40%));
+  --grey66:          hsl(0, 0%, calc(var(--whiteLightness) - 60%));
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Roboto', serif;
+  font-size: 14px;
+  line-height: 16px;
+  color: var(--white);
+  background-color: var(--black);
+}
+
+* {
+  color: var(--white);
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}

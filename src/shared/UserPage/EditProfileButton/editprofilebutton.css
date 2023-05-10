@@ -1,0 +1,12 @@
+.editProfileButton {
+  padding: 10px 20px;
+  border-radius: 10px;
+  width: 150px;
+  font-size: 20px;
+  color: var(--white);
+  background-color: var(--grey29);
+}
+
+.editProfileButton:hover {
+  background-color: var(--grey39);
+}

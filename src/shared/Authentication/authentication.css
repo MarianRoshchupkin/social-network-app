@@ -1,0 +1,13 @@
+.container {
+  margin: 0 auto;
+  max-width: 1400px;
+}
+
+.forms {
+  flex-direction: column;
+  display: flex;
+  justify-content: end;
+  margin: 0 auto;
+  width: 500px;
+  min-height: 725px;
+}

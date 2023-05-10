@@ -1,0 +1,17 @@
+.userInfoList {
+  display: flex;
+}
+
+.userInfoItem {
+  font-size: 20px;
+}
+
+.userInfoItem:not(:last-child) {
+  margin-right: 40px;
+}
+
+.userInfoDesc {
+  padding: 0;
+  margin: 0;
+  font-size: 20px;
+}
