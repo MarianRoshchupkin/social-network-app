@@ -15,6 +15,7 @@ import thunk from "redux-thunk";
 import { BrowserRouter, Route, Navigate, Routes } from "react-router-dom";
 import {EditPage} from "./shared/UserPage/EditPage";
 import {DownloadModal} from "./shared/DownloadModal";
+import {PostsList} from "./shared/PostsList";
 
 const store = createStore(rootReducer, composeWithDevTools(
   applyMiddleware(thunk)
@@ -40,42 +41,25 @@ function AppComponent() {
     <div>
       {mounted && (
         <BrowserRouter>
-          <Routes>
-            {Object.keys(user).length === 0 && (
-              <Route path='/signup' element={<Navigate to='/posts' replace />} />
-            ) || (
-              <Route path='/login' element={<Navigate to='/posts' replace />} />
-            )}
-            <Route path='/user/:username/modal' element={<DownloadModal />} />
-            <Route path='/' element={<Navigate to='/posts' replace />} />
-            <Route path='/posts' element={
-              <Layout>
-                <Header />
-                <Content>
-                  <Sprite />
-                </Content>
-              </Layout>
-            } />
-            <Route path='/user/:username' element={
-              <Layout>
-                <Header />
-                <Content>
-                  <Sprite />
-                  <UserPage />
-                </Content>
-              </Layout>
-            } />
-            <Route path='/updateUserData' element={<Navigate to='/edit' replace />} />
-            <Route path='/edit' element={
-              <Layout>
-                <Header />
-                <Content>
-                  <Sprite />
-                  <EditPage />
-                </Content>
-              </Layout>
-            } />
-          </Routes>
+          <Layout>
+            <Header />
+            <Content>
+              <Sprite />
+              <Routes>
+                {Object.keys(user).length === 0 && (
+                  <Route path='/signup' element={<Navigate to='/posts' replace />} />
+                ) || (
+                  <Route path='/login' element={<Navigate to='/posts' replace />} />
+                )}
+                <Route path='/' element={<Navigate to='/posts' replace />} />
+                <Route path='/posts' element={<PostsList />} />
+                <Route path='/user/:username' element={<UserPage />} />
+                <Route path='/user/:username/modal' element={<DownloadModal />} />
+                <Route path='/updateUserData' element={<Navigate to='/edit' replace />} />
+                <Route path='/edit' element={<EditPage />} />
+              </Routes>
+            </Content>
+          </Layout>
         </BrowserRouter>
       )}
     </div>

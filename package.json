@@ -5,6 +5,7 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
+    "db:drop": "knex migrate:rollback",
     "db:migrate": "knex migrate:latest",
     "predeploy": "npm run build:dev",
     "deploy": "gh-pages -d build:dev",

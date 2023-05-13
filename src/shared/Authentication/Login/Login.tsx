@@ -2,15 +2,6 @@ import React from 'react';
 import styles from './login.css';
 
 export function Login() {
-  // const dispatch = useDispatch<ThunkDispatch<IInitialState, void, AnyAction>>();
-  // const [username, setUsername] = useState('');
-  // const [password, setPassword] = useState('');
-  // console.log(username);
-  // console.log(password);
-  //
-  // function handleSubmit() {
-  //   dispatch(setUserAsync(username, password)())
-  // }
   return (
     <div className={styles.login}>
       <h2 className={styles.title}>Вход</h2>
