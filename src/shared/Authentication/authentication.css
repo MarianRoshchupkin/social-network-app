@@ -3,6 +3,29 @@
   max-width: 1400px;
 }
 
+.error {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 20px;
+}
+
+.errorDesc {
+  padding: 20px 35px;
+  margin: 0;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.errorRed {
+  background-color: var(--red);
+}
+
+.errorGreen {
+  background-color: var(--green59);
+}
+
 .forms {
   flex-direction: column;
   display: flex;

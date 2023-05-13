@@ -13,6 +13,9 @@ export interface IUser {
   age: number;
   university: string;
   city: string;
+  loginError: string;
+  signupError: string;
+  signupSuccess: string;
 }
 
 export function useUser() {

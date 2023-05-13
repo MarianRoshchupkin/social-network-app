@@ -23,35 +23,53 @@ app.use("/static", express.static("./dist/client"));
 app.use(cookieParser());
 
 app.get("/", auth(), (req, res) => {
-  res.send(indexTemplate(ReactDOM.renderToString(App()), JSON.stringify(req.user ? req.user : {})));
+  res.send(indexTemplate(ReactDOM.renderToString(
+    App()), JSON.stringify(req.user ? req.user : {})
+  ));
 });
 
 app.post("/login", bodyParser.urlencoded({ extended: false }), async (req, res) => {
   const { username, password } = req.body;
   const user = await findUserByUsername(username);
 
-  if (!user || user.password !== createHash(password))
-    return res.send(indexTemplate(ReactDOM.renderToString(App()), {}));
+  if (!user || user.password !== createHash(password)) {
+    return res.send(indexTemplate(ReactDOM.renderToString(
+      App()), JSON.stringify({ loginError: 'Неверный логин/пароль' })
+    ));
+  }
 
   const sessionId = await createSession(user.id);
+
   res
     .cookie("sessionId", sessionId, { httpOnly: true })
-    .send(indexTemplate(ReactDOM.renderToString(App()), JSON.stringify(user)));
+    .send(indexTemplate(ReactDOM.renderToString(
+      App()),
+      JSON.stringify(user)
+    ));
 });
 
 app.get("/logout", auth(), async (req, res) => {
   await deleteSession(req.sessionId);
-  res.clearCookie("sessionId").send(indexTemplate(ReactDOM.renderToString(App()), {}));
+  res.clearCookie("sessionId").send(indexTemplate(ReactDOM.renderToString(
+    App()),
+    JSON.stringify({})
+  ));
 });
 
 app.post("/signup", bodyParser.urlencoded({ extended: false }), async (req, res) => {
   const { username, password } = req.body;
 
   if (username.length === 0 || password.length === 0)
-    return res.send(indexTemplate(ReactDOM.renderToString(App()), {}));
+    return res.send(indexTemplate(ReactDOM.renderToString(
+      App()),
+      JSON.stringify({ signupError: 'Введите данные' })
+    ));
 
   if ((await findUserByUsername(username)) && username === (await findUserByUsername(username)).username)
-    return res.send(indexTemplate(ReactDOM.renderToString(App()), {}));
+    return res.send(indexTemplate(ReactDOM.renderToString(
+      App()),
+      JSON.stringify({ signupError: 'Данный пользователь уже зарегистрирован' })
+    ));
 
   await database('users').insert({
     id: generateRandomString(),
@@ -59,7 +77,10 @@ app.post("/signup", bodyParser.urlencoded({ extended: false }), async (req, res)
     password: createHash(password)
   })
 
-  res.send(indexTemplate(ReactDOM.renderToString(App()),JSON.stringify({})));
+  res.send(indexTemplate(ReactDOM.renderToString(
+    App()),
+    JSON.stringify({ signupSuccess: 'Аккаунт успешно создан' })
+  ));
 });
 
 app.post("/user/:username", auth(), async (req, res) => {
@@ -68,7 +89,10 @@ app.post("/user/:username", auth(), async (req, res) => {
     .where({ username: req.params.username })
     .first()
 
-  res.send(indexTemplate(ReactDOM.renderToString(App()), JSON.stringify(user)));
+  res.send(indexTemplate(ReactDOM.renderToString(
+    App()),
+    JSON.stringify(user)
+  ));
 });
 
 app.post("/updateUserData", auth(), bodyParser.urlencoded({ extended: false }), async (req, res) => {
@@ -82,11 +106,17 @@ app.post("/updateUserData", auth(), bodyParser.urlencoded({ extended: false }), 
       age: age
     })
 
-  res.send(indexTemplate(ReactDOM.renderToString(App()), JSON.stringify(req.user)));
+  res.send(indexTemplate(ReactDOM.renderToString(
+    App()),
+    JSON.stringify(req.user)
+  ));
 });
 
 app.get("*", auth(), (req, res) => {
-  res.send(indexTemplate(ReactDOM.renderToString(App()), JSON.stringify(req.user ? req.user : {})));
+  res.send(indexTemplate(ReactDOM.renderToString(
+    App()),
+    JSON.stringify(req.user ? req.user : {})
+  ));
 });
 
 app.listen(3000, () => {

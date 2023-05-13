@@ -28,8 +28,12 @@ function AppComponent() {
     setMounted(true);
   }, []);
 
-  if (mounted && Object.keys(user).length === 0) {
-    return <Authentication />
+  if (mounted && (user.loginError
+    || user.signupError
+    || user.signupSuccess
+    || Object.keys(user).length === 0)
+  ) {
+    return <Authentication user={user} />
   }
 
   return (
